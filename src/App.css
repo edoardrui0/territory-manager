@@ -1,7 +1,48 @@
-/* .App {
+ .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-} */
-
-.App .address {
+  justify-content: center;
+  align-items: center;
   padding: 10px;
 }
+
+.App a.address {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+.App .createAddressForm {
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.App .createAddressForm .inputForm{
+  padding-bottom: 5px;
+  display: flex;
+  width: 188px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin-bottom: 5px;
+}
+
+
+
+
+@media screen and (min-width: 480px) {
+
+}
+
+
+
+

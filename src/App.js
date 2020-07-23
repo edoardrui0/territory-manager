@@ -1,126 +1,62 @@
 import React from "react";
 import "./App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+import * as storage from './utils/storage'
+import {AddressList} from './AddressList';
+import {NewAddress} from './NewAddress';
+import {AddressDetail} from './AddressDetail';
+import { data } from "./data";
 
-const data = {
-  addresses: [
-    {
-      streetOrAvenue: "NW 19 Ave",
-      houseOrBuildingNumber: "1843",
-      unit: "101",
-      city: "Miami",
-      state: "Florida",
-      zip: "33125",
-      records: [
-        {
-          date: "2020-06-08",
-          mark: "NC",
-          notes: "",
-        },
-        {
-          date: "2020-06-07",
-          mark: "H",
-          notes: "Le dejé la Atalaya #4",
-        },
-      ],
-    },
-    {
-      streetOrAvenue: "NW 19 Ave",
-      houseOrBuildingNumber: "1843",
-      unit: "102",
-      city: "Miami",
-      state: "Florida",
-      zip: "33125",
-      records: [
-        {
-          date: "2020-06-08",
-          mark: "M",
-          notes: "Le deje el tratado del futuro",
-        },
-        {
-          date: "2020-06-07",
-          mark: "NC",
-          notes: "",
-        },
-      ],
-    },
-    {
-      streetOrAvenue: "NW 19 Ave",
-      houseOrBuildingNumber: "1845",
-      unit: null,
-      city: "Miami",
-      state: "Florida",
-      zip: "33125",
-      records: [
-        {
-          date: "2020-06-08",
-          mark: "NC",
-          notes: "",
-        },
-        {
-          date: "2020-06-07",
-          mark: "NC",
-          notes: "",
-        },
-      ],
-    },
-  ],
-};
 
 function App() {
-  const [addresses, setAddresses] = React.useState(JSON.parse(localStorage.getItem('data')) ?? data.addresses);
-  const [houseNumber, setHouseNumber] = React.useState('');
-  const [street, setStreet] = React.useState('');
+  const [addresses, setAddresses] = React.useState(
+    storage.get("data") ?? data.addresses
+  );
 
-  function handleSubmit() {
+  function handleSubmit(newAddress) {
     const newAddresses = [
       ...addresses,
-      {
-        houseOrBuildingNumber: houseNumber,
-        streetOrAvenue: street
-      }
+      newAddress,
     ];
+
     setAddresses(newAddresses);
-    localStorage.setItem('data', JSON.stringify(newAddresses))
-    setHouseNumber('');
-    setStreet('');
+    storage.set("data", newAddresses);
   }
 
   return (
-    <div className="App">
-      {addresses.map((address, index) => {
-        return (
-          <div className="address" key={index}>
-            <div className="line1">
-              {address.houseOrBuildingNumber} {address.streetOrAvenue}
-            </div>
-            {address.unit && <div className="unit">Apt# {address.unit}</div>}
-            <div className="line2">
-              {address.city} {address.state}, {address.zip}
-            </div>
-          </div>
-        );
-      })}
-      <div className="createAddressForm">
-        <div>
-          <label>House or Building Number</label>
-          <input name="housenumber" value={houseNumber} onChange={event => {
-            setHouseNumber(event.target.value);
-          }} />
-        </div>
-        <div>
-          <label>Street or Avenue</label>
-          <input name="street" value={street} onChange={event => {
-            setStreet(event.target.value);
-          }} />
-        </div>
-        <button
-          onClick={handleSubmit}
-        >
-          Add address
-        </button>
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/new-address">New Address</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/new-address">
+            <NewAddress addresses={addresses} onSubmit={handleSubmit} />
+          </Route>
+          <Route path="/addresses/:addressId">
+            <AddressDetail addresses={addresses} />
+          </Route>
+          <Route path="/addresses">
+            <AddressList addresses={addresses} />
+          </Route>
+          <Redirect path="/" to="/addresses" />
+        </Switch>
       </div>
-    </div>
-  );
+    </Router>
+  )
 }
 
 export default App;
