@@ -1,0 +1,21 @@
+.createAddressForm {
+  border: 2px solid rgb(211, 159, 46);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px 45px;
+}
+
+.inputForm {
+  width: 188px;
+}
+
+.addressButton {
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 480px) {
+}

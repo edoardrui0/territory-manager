@@ -1,0 +1,35 @@
+.address,
+.selectedAddress,
+.newInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.address {
+  margin-top: 15px;
+}
+
+.selectedAddress {
+  padding: 20px 65px;
+  border: 2.5px solid rgb(180, 102, 180);
+  border-radius: 10px;
+  width: 147px;
+}
+
+.newInfo {
+  margin-top: 25px;
+}
+
+.addressInput {
+    width: 230px;
+}
+
+.records {
+  padding: 2.5px 20px;  
+  margin-top: 20px;  
+  border-radius: 25px;
+  background-color: rgb(243, 243, 243);
+  border: 2px solid rgb(15, 158, 194);
+}

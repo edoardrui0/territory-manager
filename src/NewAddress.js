@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { createRandomString } from './utils/createRandomString'
+import { createRandomString } from "./utils/createRandomString";
+import styles from "./NewAddress.module.css";
 
 export function NewAddress({ addresses, onSubmit }) {
   const [houseNumber, setHouseNumber] = React.useState("");
@@ -20,7 +21,7 @@ export function NewAddress({ addresses, onSubmit }) {
       state: stateName,
       zip: zipCode,
     });
-    
+
     setHouseNumber("");
     setStreet("");
     setCity("");
@@ -32,8 +33,8 @@ export function NewAddress({ addresses, onSubmit }) {
 
   return (
     <div>
-      <div className="createAddressForm">
-        <div className="inputForm">
+      <div className={styles.createAddressForm}>
+        <div className={styles.inputForm}>
           <label>House or Building Number</label>
           <input
             name="housenumber"
@@ -43,7 +44,7 @@ export function NewAddress({ addresses, onSubmit }) {
             }}
           />
         </div>
-        <div className="inputForm">
+        <div className={styles.inputForm}>
           <label>Street or Avenue</label>
           <input
             name="street"
@@ -53,7 +54,7 @@ export function NewAddress({ addresses, onSubmit }) {
             }}
           />
         </div>
-        <div className="inputForm">
+        <div className={styles.inputForm}>
           <label>City</label>
           <input
             name="cityName"
@@ -63,7 +64,7 @@ export function NewAddress({ addresses, onSubmit }) {
             }}
           />
         </div>
-        <div className="inputForm">
+        <div className={styles.inputForm}>
           <label>State</label>
           <input
             name="stateName"
@@ -73,7 +74,7 @@ export function NewAddress({ addresses, onSubmit }) {
             }}
           />
         </div>
-        <div className="inputForm">
+        <div className={styles.inputForm}>
           <label>Zip Code</label>
           <input
             name="zipCode"
@@ -83,7 +84,12 @@ export function NewAddress({ addresses, onSubmit }) {
             }}
           />
         </div>
-        <button onClick={handleSubmit}>Add address</button>
+        <button
+          type="submit"
+          className={styles.addressButton}
+          onClick={handleSubmit}>
+          Add address
+        </button>
       </div>
     </div>
   );
