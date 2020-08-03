@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import styles from "./AddressDetail.module.css";
 
 console.log(styles);
@@ -15,13 +15,6 @@ export function AddressDetail({ addresses, onSubmit }) {
     return <div>Not found</div>;
   }
 
-  function addNewAddressInfo(event) {
-    event.preventDefault();
-    const addNewInfo = event.target[0].value;
-
-    alert(`You entered: ${addNewInfo}`);
-  }
-
   return (
     <div className={styles.address}>
       <div className={styles.selectedAddress}>
@@ -34,20 +27,13 @@ export function AddressDetail({ addresses, onSubmit }) {
         </div>
       </div>
 
-      <form onSubmit={addNewAddressInfo} className={styles.newInfo}>
-        <div>
-          <label htmlFor="addNewInfo">Please add new householder info: </label>
-          <input
-            id="addNewInfo"
-            type="text"
-            className={styles.addressInput}
-          ></input>
-        </div>
-
-        <button type="submit" className={styles.records}>
-          Add new householder information
-        </button>
-      </form>
+      <Link to="/householder-detail">
+        <form className={styles.newInfo}>
+          <button type="submit" className={styles.records}>
+            Add new householder information
+          </button>
+        </form>
+      </Link>
     </div>
   );
 }

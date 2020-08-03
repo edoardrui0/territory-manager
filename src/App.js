@@ -4,13 +4,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom";
 import * as storage from './utils/storage'
 import {AddressList} from './AddressList';
 import {NewAddress} from './NewAddress';
 import {AddressDetail} from './AddressDetail';
+import {HouseholderDetail} from './HouseholderDetail';
 import { data } from "./data";
 
 
@@ -32,7 +32,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -40,8 +40,11 @@ function App() {
             <li>
               <Link to="/new-address">New Address</Link>
             </li>
+            <li>
+              <Link to="/householder-detail">Householder Detail</Link>
+            </li>
           </ul>
-        </nav>
+        </nav> */}
         <Switch>
           <Route path="/new-address">
             <NewAddress addresses={addresses} onSubmit={handleSubmit} />
@@ -52,7 +55,10 @@ function App() {
           <Route path="/addresses">
             <AddressList addresses={addresses} />
           </Route>
-          <Redirect path="/" to="/addresses" />
+          <Route path="/householder-detail">
+            <HouseholderDetail addresses={addresses} />
+          </Route>
+          <Redirect from="/" to="/addresses" />
         </Switch>
       </div>
     </Router>
