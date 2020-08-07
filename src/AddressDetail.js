@@ -27,6 +27,10 @@ export function AddressDetail({ addresses, onSubmit }) {
         </div>
       </div>
 
+      <div>
+        
+      </div>
+
       <Link to="/householder-detail">
         <form className={styles.newInfo}>
           <button type="submit" className={styles.records}>
