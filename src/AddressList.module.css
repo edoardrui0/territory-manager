@@ -1,24 +1,72 @@
-.address {
+@import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap);
+
+.linkArea {
+  margin-top: 25px;
+}
+
+.address,
+.addressBox,
+.link,
+.linkBox {
   display: flex;
-  flex-direction: column;
-  text-align: center;
   justify-content: center;
   align-items: center;
-  padding: 10px 65px;
-  border: 2px solid rgb(67, 153, 202);
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 20px;
+  font-size: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.helpfulInfo {
+  margin-bottom: 20px;
+  font-size: 25px;
+  color: white;
+}
+
+.addressBox {
+  margin-bottom: 25px;
+}
+
+.address {
+  width: 345px;
+  height: 100px;
+  background: #f8f8f8;
+  border: 2px solid #65799b;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  margin-bottom: 10px;
-  display: block;
-  color: black;
+  font-size: 22px;
+}
+
+.addressLink {
   text-decoration: none;
+  color: #363636;
 }
 
 .linkBox {
-  margin-top: 15px;
+  margin-top: 45px;
 }
 
 .link {
+  font-size: 22px;
+  color: white;
+  width: 239px;
+  height: 67px;
   text-decoration: none;
+  background: #4a6da7;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-sizing: border-box;
+  box-shadow: 0px 7px 5px -3px rgba(0, 0, 0, 0.25);
+  border-radius: 43px;
+  position: fixed;
+  bottom: 30px;
+  right: 25px;
 }
 
 @media screen and (min-width: 480px) {

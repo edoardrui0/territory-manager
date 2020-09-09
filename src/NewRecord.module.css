@@ -1,12 +1,10 @@
-.createAddressForm,
-.inputForm,
-.input,
-.addressButton,
-.addressButtonBox {
+.area,
+.newInfo,
+.submitButton {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 .area {
@@ -24,51 +22,56 @@
 
 .helpfulInfo {
   margin-bottom: 20px;
+  font-size: 25px;
   color: white;
-  font-size: 23px;
 }
 
-.createAddressForm {
+.newInfoBox {
   background: #f8f8f8;
-  border: 2px solid #65799b;
+  border: 2px solid #657b9b;
   box-sizing: border-box;
-  box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  width: 336px;
-  height: 525px;
+  width: 342px;
+  height: 465px;
 }
 
-.inputForm {
-  margin: 13px 0;
+.newInfo {
+  font-size: 30px;
+  font-weight: normal;
+  margin-top: 30px;
 }
 
-.labelStyle {
-  font-size: 24px;
-  margin-bottom: 4px;
-}
-
-.input {
-  background: #ffffff;
-  border: 1px solid #414141;
-  border-radius: 15px;
+.newInfo input {
   width: 250px;
-  height: 32px;
+  height: 28px;
+  border-radius: 15px;
+  border: 1px solid #414141;
+  box-shadow: 1px 1px 1px #999;
 }
 
-.addressButton {
+textarea {
+  line-height: 1.5;
+  border-radius: 15px;
+  border: 1px solid #414141;
+  box-shadow: 1px 1px 1px #999;
+}
+
+.submitButtonBox {
+  margin-top: 25px;
+}
+
+.submitButton {
+  font-size: 26px;
   color: white;
-  font-size: 28px;
+  width: 239px;
+  height: 67px;
   background: #4a6da7;
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-sizing: border-box;
   box-shadow: 0px 7px 5px -3px rgba(0, 0, 0, 0.25);
   border-radius: 43px;
-  width: 239px;
-  height: 67px;
   position: fixed;
   bottom: 30px;
   right: 25px;
-}
-
-@media screen and (min-width: 480px) {
 }

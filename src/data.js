@@ -1,6 +1,7 @@
 export const data = {
   addresses: [
     {
+      id: "kb32k3882",
       streetOrAvenue: "NW 19 Ave",
       houseOrBuildingNumber: "1843",
       unit: "101",
@@ -21,6 +22,7 @@ export const data = {
       ],
     },
     {
+      id: "cf9j7ro16",
       streetOrAvenue: "NW 19 Ave",
       houseOrBuildingNumber: "1843",
       unit: "102",
@@ -41,6 +43,7 @@ export const data = {
       ],
     },
     {
+      id: "isj3qskae",
       streetOrAvenue: "NW 19 Ave",
       houseOrBuildingNumber: "1845",
       unit: null,

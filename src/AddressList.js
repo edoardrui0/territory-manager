@@ -6,23 +6,28 @@ import styles from "./AddressList.module.css";
 
 export function AddressList({ addresses }) {
   return (
-    <div className={styles.linkBox}>
-      {addresses.map((address, index) => {
+    <div className={styles.linkArea}>
+      <div className={styles.header}>Addresses</div>
+
+      <div className={styles.helpfulInfo}>
+        Select an Address to view its details
+      </div>
+
+      {addresses.map((address) => {
         return (
-          <div>
+          <div key={address.id} className={styles.addressBox}>
             <Link
-              key={index}
-              className={styles.link}
+              className={styles.addressLink}
               to={`/addresses/${address.id}`}
             >
               <div className={styles.address}>
-                <div className="line1">
+                <div className={styles.line}>
                   {address.houseOrBuildingNumber} {address.streetOrAvenue}
                 </div>
                 {address.unit && (
-                  <div className="unit">Apt# {address.unit}</div>
+                  <div className={styles.line}>Apt# {address.unit}</div>
                 )}
-                <div className="line2">
+                <div className={styles.line}>
                   {address.city} {address.state}, {address.zip}
                 </div>
               </div>
@@ -31,9 +36,9 @@ export function AddressList({ addresses }) {
         );
       })}
 
-      <div>
-        <Link to={`/new-address`}>
-          <button>Add a new address</button>
+      <div className={styles.linkBox}>
+        <Link to={`/new-address`} className={styles.link}>
+          Add a new address
         </Link>
       </div>
     </div>

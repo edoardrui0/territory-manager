@@ -3,51 +3,85 @@ import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
+  Link,
   Route,
-  Redirect
+  Redirect,
 } from "react-router-dom";
-import * as storage from './utils/storage'
-import {AddressList} from './AddressList';
-import {NewAddress} from './NewAddress';
-import {AddressDetail} from './AddressDetail';
-import {HouseholderDetail} from './HouseholderDetail';
+import * as storage from "./utils/storage";
+import { AddressList } from "./AddressList";
+import { NewAddress } from "./NewAddress";
+import { AddressDetail } from "./AddressDetail";
+import { NewRecord } from "./NewRecord";
 import { data } from "./data";
 
+import { AiFillHome } from "react-icons/ai";
 
 function App() {
   const [addresses, setAddresses] = React.useState(
     storage.get("data") ?? data.addresses
   );
 
-  function handleSubmit(newAddress) {
-    const newAddresses = [
-      ...addresses,
-      newAddress,
-    ];
+  function addNewAddress(newAddress) {
+    const newAddresses = [...addresses, newAddress];
 
     setAddresses(newAddresses);
     storage.set("data", newAddresses);
   }
 
+  function addNewRecord(newRecord, addressId) {
+    // get existing address object (find it using the addressId that was passed)
+    const existingAddress = addresses.find(
+      (address) => address.id === addressId
+    );
+
+    // from the existing address, save the records in a variable and make sure it is an array (with ?? fallback)
+    const existingAddressRecords = existingAddress.records ?? [];
+
+    // create the new version of the address, which will contain the new record
+    const newAddress = {
+      ...existingAddress, // keep the existing address properties
+      records: [
+        ...existingAddressRecords, // keep the existing records
+        newRecord, // add the new record to the records array
+      ],
+    };
+
+    // create the new version of the addresses array, which will contain the new version of the address
+    const newAddresses = addresses.map((address) => {
+      if (address.id === addressId) {
+        return newAddress;
+      } else {
+        return address;
+      }
+    });
+
+    // save the new version of the addresses array in the app's state
+    setAddresses(newAddresses);
+    // save the new version of the addresses array in localStorage
+    storage.set("data", newAddresses);
+  }
+
   return (
     <Router>
+      <div className="blueBackground" />
       <div className="App">
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/new-address">New Address</Link>
-            </li>
-            <li>
-              <Link to="/householder-detail">Householder Detail</Link>
-            </li>
-          </ul>
-        </nav> */}
+        <nav>
+          <Link to="/">
+            <AiFillHome />
+          </Link>
+          {/* <li>
+            <Link to="/new-address">New Address</Link>
+          </li>
+          <li>
+            <Link to="/householder-detail">Householder Detail</Link>
+          </li> */}
+        </nav>
         <Switch>
           <Route path="/new-address">
-            <NewAddress addresses={addresses} onSubmit={handleSubmit} />
+            <NewAddress addresses={addresses} onSubmit={addNewAddress} />
+          </Route>
+          <Route path="/addresses/:addressId/new-record">
+            <NewRecord addresses={addresses} onSubmit={addNewRecord} />
           </Route>
           <Route path="/addresses/:addressId">
             <AddressDetail addresses={addresses} />
@@ -55,14 +89,12 @@ function App() {
           <Route path="/addresses">
             <AddressList addresses={addresses} />
           </Route>
-          <Route path="/householder-detail">
-            <HouseholderDetail addresses={addresses} />
-          </Route>
+
           <Redirect from="/" to="/addresses" />
         </Switch>
       </div>
     </Router>
-  )
+  );
 }
 
 export default App;

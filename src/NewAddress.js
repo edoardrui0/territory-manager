@@ -20,6 +20,7 @@ export function NewAddress({ addresses, onSubmit }) {
       city: cityName,
       state: stateName,
       zip: zipCode,
+      records: [],
     });
 
     setHouseNumber("");
@@ -32,11 +33,16 @@ export function NewAddress({ addresses, onSubmit }) {
   }
 
   return (
-    <div>
+    <div className={styles.area}>
+      <div className={styles.header}>New Address</div>
+
+      <div className={styles.helpfulInfo}>Input the required information</div>
+
       <div className={styles.createAddressForm}>
         <div className={styles.inputForm}>
-          <label>House or Building Number</label>
+          <label className={styles.labelStyle}>House or Building Number</label>
           <input
+            className={styles.input}
             name="housenumber"
             value={houseNumber}
             onChange={(event) => {
@@ -45,8 +51,9 @@ export function NewAddress({ addresses, onSubmit }) {
           />
         </div>
         <div className={styles.inputForm}>
-          <label>Street or Avenue</label>
+          <label className={styles.labelStyle}>Street or Avenue</label>
           <input
+            className={styles.input}
             name="street"
             value={street}
             onChange={(event) => {
@@ -55,8 +62,9 @@ export function NewAddress({ addresses, onSubmit }) {
           />
         </div>
         <div className={styles.inputForm}>
-          <label>City</label>
+          <label className={styles.labelStyle}>City</label>
           <input
+            className={styles.input}
             name="cityName"
             value={cityName}
             onChange={(event) => {
@@ -65,8 +73,9 @@ export function NewAddress({ addresses, onSubmit }) {
           />
         </div>
         <div className={styles.inputForm}>
-          <label>State</label>
+          <label className={styles.labelStyle}>State</label>
           <input
+            className={styles.input}
             name="stateName"
             value={stateName}
             onChange={(event) => {
@@ -75,8 +84,9 @@ export function NewAddress({ addresses, onSubmit }) {
           />
         </div>
         <div className={styles.inputForm}>
-          <label>Zip Code</label>
+          <label className={styles.labelStyle}>Zip Code</label>
           <input
+            className={styles.input}
             name="zipCode"
             value={zipCode}
             onChange={(event) => {
@@ -84,12 +94,16 @@ export function NewAddress({ addresses, onSubmit }) {
             }}
           />
         </div>
-        <button
-          type="submit"
+      </div>
+
+      <div className={styles.addressButtonBox}>
+        <div
           className={styles.addressButton}
-          onClick={handleSubmit}>
+          type="submit"
+          onClick={handleSubmit}
+        >
           Add address
-        </button>
+        </div>
       </div>
     </div>
   );
