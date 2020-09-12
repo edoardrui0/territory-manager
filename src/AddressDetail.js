@@ -4,7 +4,7 @@ import styles from "./AddressDetail.module.css";
 
 console.log(styles);
 
-export function AddressDetail({ addresses, onSubmit }) {
+export function AddressDetail({ addresses }) {
   let { addressId } = useParams();
 
   const address = addresses.find((addrs) => {
@@ -13,6 +13,22 @@ export function AddressDetail({ addresses, onSubmit }) {
 
   if (!address) {
     return <div>Not found</div>;
+  }
+
+  function getMarkCircleColor(mark) {
+    return mark.toUpperCase() === "DO NOT CALL"
+      ? styles.redCircle
+      : mark.toUpperCase() === "WOMAN"
+      ? styles.pinkCircle
+      : mark.toUpperCase() === "MAN"
+      ? styles.blueCircle
+      : styles.circle;
+  }
+
+  function getMarkLabelColor(mark) {
+    return mark.toUpperCase() === "DO NOT CALL"
+      ? styles.redMarkStyle
+      : styles.markStyle;
   }
 
   return (
@@ -41,8 +57,10 @@ export function AddressDetail({ addresses, onSubmit }) {
               <div className={styles.recordAround}>
                 <div className={styles.dateStyle}>{record.date}</div>
                 <div className={styles.recordRight}>
-                  <div className={styles.circle}></div>
-                  <div className={styles.markStyle}>{record.mark}</div>
+                  <div className={getMarkCircleColor(record.mark)}></div>
+                  <div className={getMarkLabelColor(record.mark)}>
+                    {record.mark.toUpperCase()}
+                  </div>
                 </div>
               </div>
               <div className={styles.notesStyle}>{record.notes}</div>

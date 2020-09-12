@@ -81,14 +81,46 @@
 .circle {
   height: 10px;
   width: 10px;
-  background-color: #c4c4c4;
+  background-color: #989898;
+  border-radius: 50%;
+  display: block;
+  margin-right: 5px;
+}
+
+.redCircle {
+  height: 10px;
+  width: 10px;
+  background-color: #ff5353;
+  border-radius: 50%;
+  display: block;
+  margin-right: 5px;
+}
+
+.pinkCircle {
+  height: 10px;
+  width: 10px;
+  background-color: #ff7edb;
+  border-radius: 50%;
+  display: block;
+  margin-right: 5px;
+}
+
+.blueCircle {
+  height: 10px;
+  width: 10px;
+  background-color: #373cd1;
   border-radius: 50%;
   display: block;
   margin-right: 5px;
 }
 
 .markStyle {
-  color: #c4c4c4;
+  color: #989898;
+  font-size: 18px;
+}
+
+.redMarkStyle {
+  color: #ff5353;
   font-size: 18px;
 }
 
