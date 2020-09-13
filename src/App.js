@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,6 +6,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import "react-datepicker/dist/react-datepicker.css";
+import styles from "./App.module.css";
 import * as storage from "./utils/storage";
 import { AddressList } from "./AddressList";
 import { NewAddress } from "./NewAddress";
@@ -63,9 +64,9 @@ function App() {
 
   return (
     <Router>
-      <div className="blueBackground" />
-      <div className="App">
-        <nav>
+      <div className={styles.blueBackground} />
+      <div className={styles.appContainer}>
+        <nav className={styles.navbar}>
           <Link to="/">
             <AiFillHome />
           </Link>

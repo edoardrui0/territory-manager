@@ -1,0 +1,10 @@
+.input {
+  font-family: sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 15px;
+  border: 1px solid #414141;
+  box-shadow: 1px 1px 1px #999;
+}

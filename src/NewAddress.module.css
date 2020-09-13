@@ -47,14 +47,6 @@
   margin-bottom: 4px;
 }
 
-.input {
-  background: #ffffff;
-  border: 1px solid #414141;
-  border-radius: 15px;
-  width: 250px;
-  height: 32px;
-}
-
 .addressButton {
   color: white;
   font-size: 28px;

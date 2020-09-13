@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./NewRecord.module.css";
 import { useHistory, useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import { formatISO } from "date-fns";
 import { createRandomString } from "./utils/createRandomString";
+import Input from "./Input";
 
 export function NewRecord({ onSubmit }) {
-  const [newDate, setNewDate] = React.useState("");
+  const [newDate, setNewDate] = React.useState(new Date());
   const [newMark, setNewMark] = React.useState("");
   const [newNotes, setNewNotes] = React.useState("");
 
@@ -16,7 +19,7 @@ export function NewRecord({ onSubmit }) {
     onSubmit(
       {
         id: createRandomString(),
-        date: newDate,
+        date: formatISO(newDate, { representation: "date" }),
         mark: newMark,
         notes: newNotes,
       },
@@ -41,24 +44,21 @@ export function NewRecord({ onSubmit }) {
       <div className={styles.newInfoBox}>
         <div className={styles.newInfo}>
           <label htmlFor="addNewDate">Date</label>
-          <input
-            id="addNewDate"
-            value={newDate}
-            type="text"
-            className={styles.dateInput}
-            onChange={(event) => {
-              setNewDate(event.target.value);
-            }}
-          />
+          <div className={styles.datepicker}>
+            <DatePicker
+              customInput={<Input />}
+              selected={newDate}
+              onChange={(date) => setNewDate(date)}
+            />
+          </div>
         </div>
 
         <div className={styles.newInfo}>
           <label htmlFor="addNewMark">Mark</label>
-          <input
+          <Input
             id="addNewMark"
             value={newMark}
             type="text"
-            className={styles.markInput}
             onChange={(event) => {
               setNewMark(event.target.value);
             }}
@@ -68,12 +68,11 @@ export function NewRecord({ onSubmit }) {
         <div className={styles.newInfo}>
           <label htmlFor="addNewNotes">Notes</label>
           <textarea
-            rows="8"
-            cols="31"
+            rows="4"
             id="addNewNotes"
             value={newNotes}
             type="text"
-            className={styles.notesInput}
+            className={styles.textarea}
             onChange={(event) => {
               setNewNotes(event.target.value);
             }}

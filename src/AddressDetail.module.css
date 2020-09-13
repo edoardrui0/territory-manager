@@ -10,124 +10,57 @@
 
 .area {
   margin-top: 25px;
-}
-
-.header {
-  margin-bottom: 20px;
-  font-size: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-}
-
-.helpfulInfo {
-  margin-bottom: 20px;
-  font-size: 25px;
-  color: white;
+  padding-bottom: 100px;
 }
 
 .selectedAddress,
-.recordBox {
-  background: #f8f8f8;
-  border: 2px solid #65799b;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
+.record {
   margin-bottom: 50px;
 }
 
 .selectedAddress {
   width: 342px;
-  height: 177px;
   font-size: 30px;
 }
 
-.recordBox {
+.record {
   width: 342px;
-  height: 170px;
-  display: flex;
-}
-
-.records {
   font-size: 25px;
-  height: 150px;
-  width: 342px;
+  padding: 16px;
 }
 
-.recordAround,
-.notesStyle {
-  margin-top: 25px;
-}
-
-.recordAround {
+.recordHeader {
   display: flex;
   justify-content: space-between;
 }
 
-.dateStyle {
+.recordDate {
   text-decoration: underline;
   color: #007305;
   font-size: 22px;
-  margin-left: 20px;
 }
 
-.recordRight {
+.recordMark {
   display: flex;
   align-items: center;
-  margin-right: 20px;
 }
 
-.circle {
+.recordMarkCircle {
   height: 10px;
   width: 10px;
-  background-color: #989898;
   border-radius: 50%;
   display: block;
   margin-right: 5px;
 }
 
-.redCircle {
-  height: 10px;
-  width: 10px;
-  background-color: #ff5353;
-  border-radius: 50%;
-  display: block;
-  margin-right: 5px;
-}
-
-.pinkCircle {
-  height: 10px;
-  width: 10px;
-  background-color: #ff7edb;
-  border-radius: 50%;
-  display: block;
-  margin-right: 5px;
-}
-
-.blueCircle {
-  height: 10px;
-  width: 10px;
-  background-color: #373cd1;
-  border-radius: 50%;
-  display: block;
-  margin-right: 5px;
-}
-
-.markStyle {
-  color: #989898;
+.recordMarkLabel {
   font-size: 18px;
 }
 
-.redMarkStyle {
-  color: #ff5353;
-  font-size: 18px;
-}
-
-.notesStyle {
+.recordNotes {
   font-size: 16px;
   text-align: left;
-  margin-left: 12px;
+  margin-top: 16px;
 }
 
 .recordLink {

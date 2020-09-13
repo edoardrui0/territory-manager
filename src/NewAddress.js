@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { createRandomString } from "./utils/createRandomString";
 import styles from "./NewAddress.module.css";
+import Input from "./Input";
 
 export function NewAddress({ addresses, onSubmit }) {
   const [houseNumber, setHouseNumber] = React.useState("");
@@ -41,8 +42,7 @@ export function NewAddress({ addresses, onSubmit }) {
       <div className={styles.createAddressForm}>
         <div className={styles.inputForm}>
           <label className={styles.labelStyle}>House or Building Number</label>
-          <input
-            className={styles.input}
+          <Input
             name="housenumber"
             value={houseNumber}
             onChange={(event) => {
@@ -52,8 +52,7 @@ export function NewAddress({ addresses, onSubmit }) {
         </div>
         <div className={styles.inputForm}>
           <label className={styles.labelStyle}>Street or Avenue</label>
-          <input
-            className={styles.input}
+          <Input
             name="street"
             value={street}
             onChange={(event) => {
@@ -63,8 +62,7 @@ export function NewAddress({ addresses, onSubmit }) {
         </div>
         <div className={styles.inputForm}>
           <label className={styles.labelStyle}>City</label>
-          <input
-            className={styles.input}
+          <Input
             name="cityName"
             value={cityName}
             onChange={(event) => {
@@ -74,8 +72,7 @@ export function NewAddress({ addresses, onSubmit }) {
         </div>
         <div className={styles.inputForm}>
           <label className={styles.labelStyle}>State</label>
-          <input
-            className={styles.input}
+          <Input
             name="stateName"
             value={stateName}
             onChange={(event) => {
@@ -85,8 +82,7 @@ export function NewAddress({ addresses, onSubmit }) {
         </div>
         <div className={styles.inputForm}>
           <label className={styles.labelStyle}>Zip Code</label>
-          <input
-            className={styles.input}
+          <Input
             name="zipCode"
             value={zipCode}
             onChange={(event) => {

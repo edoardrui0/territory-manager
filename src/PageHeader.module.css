@@ -1,0 +1,16 @@
+.container {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 48px;
+  color: white;
+  text-align: center;
+}
+
+.desc {
+  margin-bottom: 20px;
+  font-size: 25px;
+  text-align: center;
+  color: white;
+}

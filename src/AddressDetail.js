@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import styles from "./AddressDetail.module.css";
+import Card from "./Card";
+import PageHeader from "./PageHeader";
 
 console.log(styles);
 
@@ -17,30 +19,26 @@ export function AddressDetail({ addresses }) {
 
   function getMarkCircleColor(mark) {
     return mark.toUpperCase() === "DO NOT CALL"
-      ? styles.redCircle
+      ? "#ff5353"
       : mark.toUpperCase() === "WOMAN"
-      ? styles.pinkCircle
+      ? "#ff7edb"
       : mark.toUpperCase() === "MAN"
-      ? styles.blueCircle
-      : styles.circle;
+      ? "#373cd1"
+      : "#989898";
   }
 
   function getMarkLabelColor(mark) {
-    return mark.toUpperCase() === "DO NOT CALL"
-      ? styles.redMarkStyle
-      : styles.markStyle;
+    return mark.toUpperCase() === "DO NOT CALL" ? "#ff5353" : "#989898";
   }
 
   return (
     <div className={styles.area}>
-      <div className={styles.header}>Address Detail</div>
+      <PageHeader
+        title="Address Detail"
+        description="Click on a experience to expand on it Click “Add New” to add a new experience"
+      />
 
-      <div className={styles.helpfulInfo}>
-        Click on a experience to expand on it Click “Add New” to add a new
-        experience
-      </div>
-
-      <div className={styles.selectedAddress}>
+      <Card className={styles.selectedAddress}>
         <div className="line1">
           {address.houseOrBuildingNumber} {address.streetOrAvenue}
         </div>
@@ -48,24 +46,30 @@ export function AddressDetail({ addresses }) {
         <div className="line2">
           {address.city} {address.state}, {address.zip}
         </div>
-      </div>
+      </Card>
 
       {address.records.map((record) => {
         return (
-          <div key={record.id} className={styles.recordBox}>
-            <div className={styles.records}>
-              <div className={styles.recordAround}>
-                <div className={styles.dateStyle}>{record.date}</div>
-                <div className={styles.recordRight}>
-                  <div className={getMarkCircleColor(record.mark)}></div>
-                  <div className={getMarkLabelColor(record.mark)}>
-                    {record.mark.toUpperCase()}
-                  </div>
+          <Card key={record.id} className={styles.record}>
+            <div className={styles.recordHeader}>
+              <div className={styles.recordDate}>{record.date}</div>
+              <div className={styles.recordMark}>
+                <div
+                  className={styles.recordMarkCircle}
+                  style={{ backgroundColor: getMarkCircleColor(record.mark) }}
+                ></div>
+                <div
+                  className={styles.recordMarkLabel}
+                  style={{ color: getMarkLabelColor(record.mark) }}
+                >
+                  {record.mark.toUpperCase()}
                 </div>
               </div>
-              <div className={styles.notesStyle}>{record.notes}</div>
             </div>
-          </div>
+            {record.notes && (
+              <div className={styles.recordNotes}>{record.notes}</div>
+            )}
+          </Card>
         );
       })}
 
