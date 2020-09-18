@@ -1,15 +1,17 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { createRandomString } from "./utils/createRandomString";
+import { createRandomString } from "../utils/createRandomString";
 import styles from "./NewAddress.module.css";
-import Input from "./Input";
+import Input from "../components/Input";
+import PageHeader from "../components/PageHeader";
+import SubmitButton from "../components/SubmitButton";
 
 export function NewAddress({ addresses, onSubmit }) {
   const [houseNumber, setHouseNumber] = React.useState("");
   const [street, setStreet] = React.useState("");
-  const [cityName, setCity] = React.useState("");
-  const [stateName, setState] = React.useState("");
-  const [zipCode, setZipCode] = React.useState("");
+  const [cityName, setCity] = React.useState("Miami");
+  const [stateName, setState] = React.useState("FL");
+  const [zipCode, setZipCode] = React.useState("33125");
 
   let history = useHistory();
 
@@ -35,9 +37,10 @@ export function NewAddress({ addresses, onSubmit }) {
 
   return (
     <div className={styles.area}>
-      <div className={styles.header}>New Address</div>
-
-      <div className={styles.helpfulInfo}>Input the required information</div>
+      <PageHeader
+        title="New Address"
+        description="Input the required information"
+      />
 
       <div className={styles.createAddressForm}>
         <div className={styles.inputForm}>
@@ -92,15 +95,20 @@ export function NewAddress({ addresses, onSubmit }) {
         </div>
       </div>
 
-      <div className={styles.addressButtonBox}>
+      <div onClick={handleSubmit}>
+        <SubmitButton button="Add Address" type="submit" />
+      </div>
+      {/* Ask Yadiel for help here ^^ */}
+
+      {/* <div className={styles.addressButtonBox}>
         <div
           className={styles.addressButton}
           type="submit"
           onClick={handleSubmit}
         >
-          Add address
+          Add Address
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

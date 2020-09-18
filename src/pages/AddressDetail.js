@@ -1,10 +1,9 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import styles from "./AddressDetail.module.css";
-import Card from "./Card";
-import PageHeader from "./PageHeader";
-
-console.log(styles);
+import Card from "../components/Card";
+import PageHeader from "../components/PageHeader";
+import SubmitButton from "../components/SubmitButton";
 
 export function AddressDetail({ addresses }) {
   let { addressId } = useParams();
@@ -73,11 +72,8 @@ export function AddressDetail({ addresses }) {
         );
       })}
 
-      <Link
-        to={`/addresses/${addressId}/new-record`}
-        className={styles.recordLink}
-      >
-        Add New Info
+      <Link to={`/addresses/${addressId}/new-record`}>
+        <SubmitButton button="Add New Info" />
       </Link>
     </div>
   );

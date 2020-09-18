@@ -3,8 +3,10 @@ import styles from "./NewRecord.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { formatISO } from "date-fns";
-import { createRandomString } from "./utils/createRandomString";
-import Input from "./Input";
+import { createRandomString } from "../utils/createRandomString";
+import Input from "../components/Input";
+import PageHeader from "../components/PageHeader";
+import SubmitButton from "../components/SubmitButton";
 
 export function NewRecord({ onSubmit }) {
   const [newDate, setNewDate] = React.useState(new Date());
@@ -35,11 +37,10 @@ export function NewRecord({ onSubmit }) {
 
   return (
     <div className={styles.area}>
-      <div className={styles.header}>New Record</div>
-
-      <div className={styles.helpfulInfo}>
-        Input the experience you had with the householder
-      </div>
+      <PageHeader
+        title="New Record"
+        description="Input the experience you had with the householder"
+      />
 
       <div className={styles.newInfoBox}>
         <div className={styles.newInfo}>
@@ -54,15 +55,21 @@ export function NewRecord({ onSubmit }) {
         </div>
 
         <div className={styles.newInfo}>
-          <label htmlFor="addNewMark">Mark</label>
-          <Input
-            id="addNewMark"
+          <label htmlFor="recordMark">Mark</label>
+          <select
+            id="recordMark"
             value={newMark}
-            type="text"
+            className={styles.input}
             onChange={(event) => {
               setNewMark(event.target.value);
             }}
-          />
+          >
+            <option value="">Please select an option</option>
+            <option value="not at home">Not At Home</option>
+            <option value="man">Man</option>
+            <option value="woman">Woman</option>
+            <option value="do not call">Do Not Call</option>
+          </select>
         </div>
 
         <div className={styles.newInfo}>
@@ -80,7 +87,12 @@ export function NewRecord({ onSubmit }) {
         </div>
       </div>
 
-      <div className={styles.submitButtonBox}>
+      <div onClick={handleSubmit}>
+        <SubmitButton button="Add New Info" type="submit" />
+      </div>
+      {/* Ask Yadiel for help here ^^ */}
+
+      {/* <div className={styles.submitButtonBox}>
         <div
           type="submit"
           className={styles.submitButton}
@@ -88,7 +100,7 @@ export function NewRecord({ onSubmit }) {
         >
           Add New Info
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
