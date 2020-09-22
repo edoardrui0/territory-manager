@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./AddressList.module.css";
-import Card from "./Card";
-import PageHeader from "./PageHeader";
+import Card from "../components/Card";
+import PageHeader from "../components/PageHeader";
+import SubmitButton from "../components/SubmitButton";
 
 // import { Redirect } from "react-router-dom";
 
@@ -37,7 +38,7 @@ export function AddressList({ addresses }) {
       })}
 
       <Link to={`/new-address`} className={styles.buttonLink}>
-        Add a new address
+        <SubmitButton button="Add a New Address" />
       </Link>
     </div>
   );

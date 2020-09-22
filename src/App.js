@@ -9,10 +9,10 @@ import {
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./App.module.css";
 import * as storage from "./utils/storage";
-import { AddressList } from "./AddressList";
-import { NewAddress } from "./NewAddress";
-import { AddressDetail } from "./AddressDetail";
-import { NewRecord } from "./NewRecord";
+import { AddressList } from "./pages/AddressList";
+import { NewAddress } from "./pages/NewAddress";
+import { AddressDetail } from "./pages/AddressDetail";
+import { NewRecord } from "./pages/NewRecord";
 import { data } from "./data";
 
 import { AiFillHome } from "react-icons/ai";
